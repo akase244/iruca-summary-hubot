@@ -36,6 +36,7 @@ module.exports = (robot) ->
                         iruca_dt = new Date (m_val['ts'] * 1000)
                         iruca_time = ('0' + String(iruca_dt.getHours()))[-2..2] + ':' + ('0' + String(iruca_dt.getMinutes()))[-2..2]
                         iruca_text = if a_value['text'] then a_value['text'] else ''
+                        iruca_text += '(' + result[1].replace(/"/g, '') + ')'
                         status_messages.push JSON.stringify({iruca_ts: m_val['ts'], iruca_text: iruca_text})
                 status_messages.reverse()
                 for s_m_val, s_m_key in status_messages
